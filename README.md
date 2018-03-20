@@ -1,2 +1,0 @@
-# Mino
-Categorizer
