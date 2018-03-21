@@ -63,6 +63,8 @@ shinyApp(
         output$value5 <- renderPrint({
           Demandate <- input$DemandRate/100
           Demandate <- ((1)/(1-Demandate))
+          as.factor(Output$Col1) -> Output$Col1
+          as.factor(Output$brand) -> Output$brand
           rbind(Output,c(input$Category,0,as.integer(input$CheckInput),input$Brand,Demandate)) -> Output
           as.numeric(Output$retail_price) -> Output$retail_price
           as.numeric(Output$Demand) -> Output$Demand
@@ -75,6 +77,9 @@ shinyApp(
         output$value8 <- renderDataTable({
           Demandate <- input$DemandRate/100
           Demandate <- ((1)/(1-Demandate))
+          as.factor(Output$Col1) -> Output$Col1
+          as.factor(Output$brand) -> Output$brand
+          Output[is.na(Output)] <- ""
           out <- rbind(Output,c(input$Category,0,as.integer(input$CheckInput),input$Brand,Demandate)) 
           return (out[18293,])
         })
